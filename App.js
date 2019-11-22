@@ -1,10 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import NavBar from "./components/NavBar";
+import Login from "./components/Login";
+import MessageBoard from "./components/MessageBoard";
 
 export default function App() {
+  const [user, setUser] = useState("");
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <NavBar user={user} setUser={setUser} />
+      {!user && <Login user={user} setUser={setUser} />}
+      {!!user && <MessageBoard user={user} />}
     </View>
   );
 }
@@ -12,8 +18,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "blue"
+  }
 });
